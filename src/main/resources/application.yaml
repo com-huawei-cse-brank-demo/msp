@@ -1,0 +1,11 @@
+#默认使用配置
+spring:
+  profiles:
+    active: dev
+  application:
+    name: auth
+
+#公共配置与profiles选择无关
+mybatis:
+  typeAliasesPackage: cn.brank.chuyiting.chuyitingmsp.entity
+  mapperLocations: classpath:mapper/*.xml
