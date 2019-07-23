@@ -4,52 +4,55 @@
 
 package cn.brank.chuyiting.chuyitingmsp.entity;
 
-/**
- * @author x00504227
- * @version NCE Analyzer R19C00
- * @since 2019-05-28
- */
 public class User {
 	/**
 	 * 
 	 */
-	private int id;
-	private String name;
-	private String password;
-	
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", password=" + password
-				+ "]";
-	}
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	public User(String name, String password) {
-		super();
-		this.name = name;
-		this.password = password;
-	}
-	public User(int id, String name, String password) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.password = password;
-	}
+	private int userId;
+	private String userName;
+	private String userPassword;
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", userName='" + userName + '\'' +
+                ", userPassword='" + userPassword + '\'' +
+                '}';
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getUserPassword() {
+        return userPassword;
+    }
+
+    public void setUserPassword(String userPassword) {
+        this.userPassword = userPassword;
+    }
+
+    public User(String userName, String userPassword) {
+        this.userName = userName;
+        this.userPassword = userPassword;
+    }
+
+    public User(int userId, String userName, String userPassword) {
+        this.userId = userId;
+        this.userName = userName;
+        this.userPassword = userPassword;
+    }
 }

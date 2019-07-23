@@ -7,26 +7,23 @@ package cn.brank.chuyiting.chuyitingmsp.mapper;
 import cn.brank.chuyiting.chuyitingmsp.entity.User;
 import org.apache.ibatis.annotations.*;
 
-/**
- * @author x00504227
- * @version NCE Analyzer R19C00
- * @since 2019-05-28
- */
+
 @Mapper
 public interface UserMapper {
 	
-	@Insert("insert into user(name, password) values(#{name},#{password})")
-	public int save(User user);
+	@Insert("insert into user(user_name, user_password) values(#{userName},#{userPassword})")
+	@Options(useGeneratedKeys = true,keyProperty = "userId", keyColumn = "user_id")
+	void save(User user);
 
-	@Insert("delete from user where name=#{name} and password=#{password}")
+	@Insert("delete from user where user_name=#{userName} and user_password=#{userPassword}")
 	public int delete(User user);
 
-	@Select("select count(*) from user where name=#{name}")
-	public int exits(@Param("name") String name);
+	@Select("select count(*) from user where user_name=#{user_name}")
+	public int exits(@Param("user_name") String user_name);
 
-	@Select("select * from user where name=#{name} and password=#{password}")
-	public User get(@Param("name") String name, @Param("password") String password);
+	@Select("select * from user where user_name=#{user_name} and user_password=#{user_password}")
+	public User get(@Param("user_name") String user_name, @Param("user_password") String user_password);
 
-	@Update("update user set password=#{newPassWord} where name=#{name} and password=#{oldPassWord}")
-	public int update(@Param("name") String name, @Param("oldPassWord") String oldPassWord, @Param("newPassWord") String newPassWord);
+	@Update("update user set user_password=#{newPassWord} where user_name=#{user_name} and user_password=#{oldPassWord}")
+	public int update(@Param("user_name") String user_name, @Param("oldPassWord") String oldPassWord, @Param("newPassWord") String newPassWord);
 }

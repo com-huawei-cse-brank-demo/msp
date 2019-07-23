@@ -10,7 +10,7 @@ spring:
 
 mybatis:
   mapper-locations: classpath:mapping/*Mapper.xml
-  type-aliases-package: com.huawei.brank.msp.entity
+  type-aliases-package: cn.brank.chuyiting.chuyitingmsp.entity
 
 #showSql
 logging:

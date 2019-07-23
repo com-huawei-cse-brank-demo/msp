@@ -3,7 +3,7 @@ spring:
   profiles:
     active: dev
   application:
-    name: auth
+    name: controller
 
 #公共配置与profiles选择无关
 mybatis:

@@ -15,14 +15,12 @@
  * limitations under the License.
  */
 
-package cn.brank.chuyiting.chuyitingmsp.auth;
+package cn.brank.chuyiting.chuyitingmsp.controller;
 
 import cn.brank.chuyiting.chuyitingmsp.entity.User;
-import cn.brank.chuyiting.chuyitingmsp.result.Result;
 import cn.brank.chuyiting.chuyitingmsp.service.UserService;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import net.sf.jsqlparser.expression.operators.relational.InExpression;
 import org.apache.servicecomb.provider.rest.common.RestSchema;
 import org.apache.servicecomb.swagger.invocation.exception.InvocationException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +36,7 @@ import static javax.ws.rs.core.Response.Status.BAD_REQUEST;
 
 @RestSchema(schemaId = "auth")
 @RequestMapping(path = "auth")
-public class AuthImpl {
+public class AuthController {
   @Autowired
   private UserService userService;
 
@@ -62,8 +60,9 @@ public class AuthImpl {
     String jwtToken = "";
     HttpHeaders headers = new HttpHeaders();
     try {
-      jwtToken = Jwts.builder().setSubject(user.getName()).claim("roles","member").setIssuedAt(new Date()).
+      jwtToken = Jwts.builder().setSubject(user.getUserName()).claim("roles","member").setIssuedAt(new Date()).
               signWith(SignatureAlgorithm.HS256, "brankSecreteKey").compact();
+      System.out.println(jwtToken);
       headers = generateAuthHeader(jwtToken);
     }catch (Exception e){
     }

@@ -21,14 +21,15 @@ public class UserService {
     private UserMapper userMapper;
 
     public int save(User user) {
-	    int i = this.exits(user.getName());
+	    int i = this.exits(user.getUserName());
         if (i != 0) {
             return 0;
         }
-		return userMapper.save(user);
+        userMapper.save(user);
+		return user.getUserId();
 	}
 	public int delete(User user) {
-	    int i = this.exits(user.getName());
+	    int i = this.exits(user.getUserName());
 	    if (i == 0){
 	        return 0;
         }
