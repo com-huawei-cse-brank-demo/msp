@@ -18,9 +18,11 @@
 package cn.brank.chuyiting.chuyitingmsp.controller;
 
 import cn.brank.chuyiting.chuyitingmsp.entity.User;
+import cn.brank.chuyiting.chuyitingmsp.result.Result;
 import cn.brank.chuyiting.chuyitingmsp.service.UserService;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import io.swagger.annotations.ApiParam;
 import org.apache.servicecomb.provider.rest.common.RestSchema;
 import org.apache.servicecomb.swagger.invocation.exception.InvocationException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,7 +58,9 @@ public class AuthController {
   }
   @GetMapping(path = "/login")
   public ResponseEntity<?> login(@RequestParam(value = "name") String name, @RequestParam(value = "password") String password) {
+    System.out.println();
     User user = userService.get(name, password);
+    System.out.println(user.toString());
     String jwtToken = "";
     HttpHeaders headers = new HttpHeaders();
     try {
@@ -74,6 +78,19 @@ public class AuthController {
     }
   }
 
+  @RequestMapping(value = "/user", method = RequestMethod.POST)
+  @ResponseBody
+  public Object registrationAccount(@ApiParam("用户名")@RequestParam("userName")String userName, @ApiParam("密码")@RequestParam("userPassword") String userPassword) {
+    User user = new User(userName, userPassword);
+    int i = userService.save(user);
+    System.out.println(i);
+    InvocationException failResponse = new InvocationException(BAD_REQUEST,"用户已存在");
+    if (i != 0) {
+      return new ResponseEntity<>(Result.success(""+i), HttpStatus.OK);
+    } else {
+      return new ResponseEntity<>(failResponse, HttpStatus.BAD_REQUEST).getBody();
+    }
+  }
 
 
   private HttpHeaders generateAuthHeader(String token){

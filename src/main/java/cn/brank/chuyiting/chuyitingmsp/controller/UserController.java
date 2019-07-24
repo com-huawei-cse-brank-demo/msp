@@ -50,20 +50,6 @@ public class UserController {
 		}
 	}
 
-	@RequestMapping(value = "/user", method = RequestMethod.POST)
-	@ResponseBody
-	public Object registrationAccount(@ApiParam("用户名")@RequestParam("userName")String userName, @ApiParam("密码")@RequestParam("userPassword") String userPassword) {
-		User user = new User(userName, userPassword);
-		int i = userService.save(user);
-		System.out.println(i);
-		InvocationException failResponse = new InvocationException(BAD_REQUEST,"用户已存在");
-		if (i != 0) {
-			return new ResponseEntity<>(Result.success("注册用户成功"), HttpStatus.OK);
-		} else {
-			return new ResponseEntity<>(failResponse, HttpStatus.BAD_REQUEST).getBody();
-		}
-	}
-
 	@RequestMapping(value = "/users", method = RequestMethod.DELETE)
 	@ResponseBody
 	public Object delete(@ApiParam("用户名")@RequestParam("userName")String userName,@ApiParam("密码")@RequestParam("userPassword") String userPassword) {

@@ -18,7 +18,7 @@
 APPLICATION_ID: chuyiting
 service_description:
   name: auth
-  version: 1.0.1
+  version: 1.0.2
   properties:
     allowCrossApp: true
 cse:
@@ -33,7 +33,7 @@ cse:
       refreshMode: 1
       refresh_interval: 5000
   rest:
-    address: 127.0.0.1:7070
+    address: 0.0.0.0:7070
     server:
       verticle-count: 10
   credentials:
@@ -62,6 +62,8 @@ cse:
 #  #      serverUri: https://cse.cn-north-1.myhuaweicloud.com:443
 #  rest:
 #    address: 0.0.0.0:7070
+#    server:
+#      verticle-count: 10
 #  credentials:
 #    accessKey: LBPFWSWNYNYDA33TTB8Z
 #    secretKey: 1Pyb299AU0lEc3E2sp1oamz21VWQxNX3VGsKNnSj
