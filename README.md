@@ -11,7 +11,8 @@
 
 1. clone到本地，修改替换application-dev.yml中相关数据库配置（用户名、密码、url）
 2. 修改microservice.yaml中credentials配置，替换自己信息，cse两种配置，上面的是连接华为提供的线上服务中心，需要自己去华为云注册获取秘钥，下面的是本地配置，需要去华为云下载本地服务中心。
-3. mvn clean install下载相关依赖，然后启动即可
+3. 使用主目录下sql文件去对应数据库创建表。
+4. mvn clean install下载相关依赖，然后启动即可
 
 #### 使用说明
 
