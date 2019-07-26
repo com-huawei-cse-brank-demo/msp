@@ -37,8 +37,8 @@ cse:
     server:
       verticle-count: 10
   credentials:
-    accessKey: LBPFWSWNYNYDA33TTB8Z
-    secretKey: 1Pyb299AU0lEc3E2sp1oamz21VWQxNX3VGsKNnSj
+    accessKey: YourAccessKey
+    secretKey: YourSecretKey
     #    akskCustomCipher: default
     project: cn-north-1
 
@@ -65,7 +65,7 @@ cse:
 #    server:
 #      verticle-count: 10
 #  credentials:
-#    accessKey: LBPFWSWNYNYDA33TTB8Z
-#    secretKey: 1Pyb299AU0lEc3E2sp1oamz21VWQxNX3VGsKNnSj
+#    accessKey: YourAccessKey
+#    secretKey: YourSecretKey
 #    #    akskCustomCipher: default
 #    project: cn-north-1
